@@ -1,3 +1,4 @@
+//kill
 //base by DGXeon
 //re-upload? recode? copy code? give credit ya :)
 //YouTube: @DGXeon
@@ -110,8 +111,24 @@ let ntnsfw = JSON.parse(fs.readFileSync('./src/data/function/nsfw.json'))
 let bad = JSON.parse(fs.readFileSync('./src/data/function/badword.json'))
 let premium = JSON.parse(fs.readFileSync('./src/data/role/premium.json'))
 const owner = JSON.parse(fs.readFileSync('./src/data/role/owner.json'))
-//media
-const VoiceNoteXeon = JSON.parse(fs.readFileSync('./XeonMedia/database/xeonvn.json'))
+//mediaconst https = require('https');
+const url = 'https://raw.githubusercontent.com/DEXTER-HIDE/CheemsBot-MD11/master/XeonMedia/database/xeonvn.json';
+
+https.get(url, (res) => {
+    let data = '';
+
+    res.on('data', (chunk) => {
+        data += chunk;
+    });
+
+    res.on('end', () => {
+        const VoiceNoteXeon = JSON.parse(data);
+        console.log(VoiceNoteXeon);
+    });
+}).on('error', (err) => {
+    console.error(err);
+});
+
 const StickerXeon = JSON.parse(fs.readFileSync('./XeonMedia/database/xeonsticker.json'))
 const ImageXeon = JSON.parse(fs.readFileSync('./XeonMedia/database/xeonimage.json'))
 const VideoXeon = JSON.parse(fs.readFileSync('./XeonMedia/database/xeonvideo.json'))
@@ -9772,3 +9789,4 @@ if (e.includes("Value not found")) return
 if (e.includes("Socket connection timeout")) return
     }
 }
+
